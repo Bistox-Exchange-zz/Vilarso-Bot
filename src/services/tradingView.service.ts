@@ -1,7 +1,7 @@
-import {inject, injectable} from "inversify";
-import {TYPES} from "../resources/types";
-import {TradeNotificationEntity} from "../entities/tradingView/tradeNotification.entity";
-import {TradingViewNotificationResource} from "../resources/tradingViewNotification.resource";
+import {inject, injectable} from 'inversify';
+import {TradeNotificationEntity} from '../entities/tradingView/tradeNotification.entity';
+import {TradingViewNotificationResource} from '../resources/tradingViewNotification.resource';
+import {TYPES} from '../resources/types';
 
 export interface ITradingViewService {
     notify(payload: TradeNotificationEntity): Promise<void>;

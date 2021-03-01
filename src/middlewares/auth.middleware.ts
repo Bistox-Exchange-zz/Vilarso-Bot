@@ -1,10 +1,10 @@
 import {NextFunction, Request, Response} from 'express';
 import * as jwt from 'jsonwebtoken';
 import {verifyServeToServe} from '../common/common';
-import {BISTOX_NODE_SECRET, PUBLIC_KEY} from '../config';
 
 export const bearer = (req: Request, res: Response, next: NextFunction) => {
-    const publicKEY = String('-----BEGIN PUBLIC KEY-----\n' + PUBLIC_KEY + '\n-----END PUBLIC KEY-----').trim();
+    // const publicKEY = String('-----BEGIN PUBLIC KEY-----\n' + PUBLIC_KEY + '\n-----END PUBLIC KEY-----').trim();
+    const publicKEY = String('-----BEGIN PUBLIC KEY-----\n' + '\n-----END PUBLIC KEY-----').trim();
 
     const bearerHeader = req.headers['authorization'];
     let payload;
@@ -45,6 +45,7 @@ export const nodeToServer = (req: Request, res: Response, next: NextFunction) =>
             // loggingHelper.error("nodeMiddleware", "requestCheck", {headers: headers}, "Missing authorization token");
             return res.status(400).json('Missing authorization token');
         }
+        const BISTOX_NODE_SECRET = '123123';
         if (headers.authorization !== BISTOX_NODE_SECRET) {
             // loggingHelper.error("nodeMiddleware",
             //     "requestCheck",
