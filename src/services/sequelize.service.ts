@@ -1,13 +1,12 @@
 import { injectable } from 'inversify';
 // tslint:disable-next-line:no-implicit-dependencies
 import {Sequelize} from 'sequelize-typescript';
-import {PG} from '../config';
 
 @injectable()
 export class SequelizeService {
     public readonly connection: Sequelize;
     constructor() {
-        this.connection = new Sequelize({
+        /*this.connection = new Sequelize({
             database: PG.database,
             username: PG.username,
             password: PG.password,
@@ -23,9 +22,6 @@ export class SequelizeService {
                     rejectUnauthorized: false,
                 },
             },
-        });
-        this.connection.sync()
-            .then(() => console.log('Postgres connected'))
-            .catch((error) => console.error('Cannot connect to postgres', error));
+        });*/
     }
 }

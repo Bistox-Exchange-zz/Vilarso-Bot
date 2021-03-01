@@ -1,6 +1,6 @@
 import * as crypto from 'crypto';
 import {Request} from 'express';
-import {PRIVATE_KEY} from '../config';
+const PRIVATE_KEY = '123';
 
 function checkServeToServe(request: Request) {
     try {

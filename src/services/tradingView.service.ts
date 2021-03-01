@@ -1,7 +1,5 @@
-import {inject, injectable} from 'inversify';
+import {injectable} from 'inversify';
 import {TradeNotificationEntity} from '../entities/tradingView/tradeNotification.entity';
-import {TradingViewNotificationResource} from '../resources/tradingViewNotification.resource';
-import {TYPES} from '../resources/types';
 
 export interface ITradingViewService {
     notify(payload: TradeNotificationEntity): Promise<void>;
@@ -9,17 +7,15 @@ export interface ITradingViewService {
 
 @injectable()
 export class TradingViewService implements ITradingViewService {
-    constructor(@inject(TYPES.TradingViewNotificationResource) private readonly _repository: TradingViewNotificationResource) {
+    constructor() {
     }
 
     async notify(payload: TradeNotificationEntity): Promise<void> {
         try {
-
+            console.log(payload);
             return Promise.resolve();
         } catch (e) {
             return Promise.reject(e);
         }
     }
-
-
 }

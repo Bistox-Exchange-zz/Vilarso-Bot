@@ -10,14 +10,13 @@ import * as path from 'path';
 import {PORT} from './config';
 import {server} from './server';
 
-const debug = Debug('app:server');
-
 server.setConfig((_app: any) => {
     _app.set('port', PORT);
     // this.app.set("env", "development");
     _app.use(cors());
     _app.use(bodyParser.json());
     _app.use(express.static(path.join(__dirname, '../public'), {maxAge: 31557600000}));
+    console.log('Configuration set');
 })
     .setErrorConfig((_app: any) => {
         // catch 404 and forward to error handler
@@ -49,12 +48,13 @@ server.setConfig((_app: any) => {
                 message: err.message,
             });
         });
+        console.log('Error configuration set');
     });
 
 const app = server.build();
 app.listen(app.get('port'), () => {
-    debug(`App is running at http://localhost:${app.get('port')} in ${app.get('env')} mode`);
-    debug('Press CTRL-C to stop');
+    console.log(`App is running at http://localhost:${app.get('port')} in ${app.get('env')} mode`);
+    console.log('Press CTRL-C to stop');
 });
 
 export {app};
