@@ -1,8 +1,4 @@
 import {Container} from 'inversify';
-import {TradingViewNotificationModel} from '../../sequelizeModels/tradingViewNotification.model';
-import {SequelizeResource} from '../resources/sequelize.resource';
-import {TradingViewNotificationResource} from '../resources/tradingViewNotification.resource';
-import {TYPES as resourceTypes} from '../resources/types';
 import {HttpClientService} from '../services/httpClient.service';
 import {SequelizeService} from '../services/sequelize.service';
 import {ITradingViewService, TradingViewService} from '../services/tradingView.service';
@@ -18,9 +14,6 @@ iocContainer
     .toConstantValue(new HttpClientService());
 
 // Repositories
-iocContainer
-    .bind<SequelizeResource<TradingViewNotificationModel>>(resourceTypes.TradingViewNotificationResource)
-    .to(TradingViewNotificationResource);
 
 // Services
 iocContainer

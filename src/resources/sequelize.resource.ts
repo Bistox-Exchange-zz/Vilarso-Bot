@@ -1,4 +1,5 @@
 import {injectable} from 'inversify';
+// tslint:disable-next-line:no-implicit-dependencies
 import {Repository} from 'sequelize-typescript';
 
 @injectable()
