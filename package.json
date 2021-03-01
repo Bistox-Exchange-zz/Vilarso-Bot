@@ -4,8 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "leha": "node index.js"
+    "build": "npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty",
+    "clean": "rimraf dist",
+    "lint": "tslint --force --format verbose \"src/**/*.ts\"",
+    "serve": "node ./dist/src/app.js",
+    "serve:dev": "set DEBUG=app*&& nodemon --inspect ./dist/src/app.js",
+    "start": "npm run build && npm run serve",
+    "start:dev": "npm run build && npm run serve:dev",
+    "test": "set NODE_ENV=test&&set DEBUG=app*&&mocha --timeout 999999 --recursive dist/src/tests/",
+    "test:ts": "set NODE_ENV=test&&set DEBUG=app*&&mocha --timeout 999999 --require ts-node/register src/tests/**/*.test.ts",
+    "watch": "npm run build -- --watch",
+    "postinstall": "npm run build"
   },
   "author": "",
   "license": "ISC",
