@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty",
     "clean": "rimraf dist",
-    "lint": "tslint --force --format verbose \"./**/*.ts\"",
+    "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "serve": "node ./dist/app.js",
     "serve:dev": "set DEBUG=app*&& nodemon --inspect ./dist/app.js",
     "start": "npm run build && npm run serve",
